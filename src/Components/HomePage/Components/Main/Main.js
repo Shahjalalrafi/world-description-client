@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { Grid } from '@material-ui/core';
 
+import {Link} from 'react-router-dom'
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -90,10 +92,11 @@ const Main = () => {
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>
-                                    <CardActions>
+                                    <CardActions >
+                                        <Link to = {`/news/${data._id}`}  style = {{textDecoration: "none", color: "white", margin: '0 auto'}}>
                                         <Button className={classes.btn} variant="contained" >
                                             view more
-                                        </Button>
+                                        </Button></Link>
                                     </CardActions>
                                 </Card>
                             </Grid>

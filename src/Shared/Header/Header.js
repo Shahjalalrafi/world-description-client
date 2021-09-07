@@ -121,10 +121,10 @@ const Header = () => {
                         <MenuIcon />
                     </IconButton>
                     <Link to = '/'>
-                    <Typography style ={{cursor: "pointer"}} variant="h6" noWrap>
-                        THE WORLD DESCRIPTION
-                    </Typography>
-                    <Link>
+                      <Typography style ={{cursor: "pointer", textDecoration: "none", color: "white"}} variant="h6" noWrap>
+                          THE WORLD DESCRIPTION
+                      </Typography>
+                    </Link>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -147,7 +147,7 @@ const Header = () => {
                 </div>
                 <Divider />
                 <List>
-                  <Link to='/dashboard'>
+                  <Link to='/dashboard' style = {{textDecoration: "none", color: "black"}}>
                   <ListItem button >
                             <ListItemIcon> <InboxIcon /> </ListItemIcon>
                             <ListItemText primary="Add News" />

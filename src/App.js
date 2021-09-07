@@ -1,8 +1,9 @@
 import React from 'react';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Home from './Components/HomePage/Home';
+import NewsDetails from './Components/NewsDetails/NewsDetails';
 
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 
 export default function App() {
@@ -16,6 +17,10 @@ export default function App() {
           
           <Route path='/dashboard'>
             <Dashboard />
+          </Route>
+          
+          <Route path='/news/:id'>
+            <NewsDetails />
           </Route>
 
           <Route exact path='/'>
