@@ -54,7 +54,7 @@ const AddService = () => {
         }
         console.log(formData)
 
-        fetch('http://localhost:5000/news', {
+        fetch('https://dry-eyrie-42597.herokuapp.com/news', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

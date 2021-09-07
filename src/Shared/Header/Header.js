@@ -93,7 +93,14 @@ const Header = () => {
   const classes = useStyles()
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [admin, setAdmin] = React.useState([])
   const [logedInUser, setLogedInUser] = useContext(userContext)
+
+  React.useEffect(() => {
+    fetch('https://dry-eyrie-42597.herokuapp.com/make-admin')
+    .then(res => res.json())
+    .then( data => setAdmin(data))
+  }, [])
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -152,16 +159,18 @@ const Header = () => {
         <List>
 
           {
-            logedInUser.email === 'hello@gmail.com' && <><Link to='/dashboard' style={{ textDecoration: "none", color: "black" }}>
+            logedInUser.email === "hello@gmail.com" && <><Link to='/dashboard' style={{ textDecoration: "none", color: "black" }}>
               <ListItem button >
                 <ListItemIcon> <AppsIcon /> </ListItemIcon>
                 <ListItemText primary="Add News" />
               </ListItem>
             </Link>
-              <ListItem button >
-                <ListItemIcon> <AddCircleOutlineIcon /> </ListItemIcon>
-                <ListItemText primary="Make Admin" />
-              </ListItem>
+              <Link to='/make-admin' style={{ textDecoration: "none", color: "black" }}>
+                <ListItem button >
+                  <ListItemIcon> <AddCircleOutlineIcon /> </ListItemIcon>
+                  <ListItemText primary="Make Admin" />
+                </ListItem>
+              </Link>
             </>
           }
 
@@ -173,14 +182,6 @@ const Header = () => {
           </Link>
         </List>
         <Divider />
-        {/* <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List> */}
       </Drawer>
     </div>
   );

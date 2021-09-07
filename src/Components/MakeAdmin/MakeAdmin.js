@@ -11,7 +11,7 @@ const MakeAdmin = () => {
         }
         console.log(formData)
 
-        fetch("http://localhost:5000/make-admin", {
+        fetch("https://dry-eyrie-42597.herokuapp.com/make-admin", {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

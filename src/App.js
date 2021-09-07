@@ -3,6 +3,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Home from './Components/HomePage/Home';
 import NewsDetails from './Components/NewsDetails/NewsDetails';
 import LogIn from './Components/Login/LogIn';
+import MakeAdmin from './Components/MakeAdmin/MakeAdmin';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import { createContext, useState } from 'react';
 
@@ -30,6 +31,10 @@ export default function App() {
           
           <Route path='/login'>
             <LogIn />
+          </Route>
+          
+          <Route path='/make-admin'>
+            <MakeAdmin />
           </Route>
 
           <Route exact path='/'>
