@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -52,16 +52,25 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const Main = ({ Data }) => {
+const Main = () => {
     const classes = useStyles();
+    const [news, setNews] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/news')
+        .then(res => res.json())
+        .then(data => setNews(data))
+    }, [])
+    console.log(news)
+
     return (
         <>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
                 <Grid container spacing={2}>
                     {
-                        Data.map(news => (
-                            <Grid item xs={12} md={3}>
+                        news.map(data => (
+                            <Grid key= {data._id} item xs={12} md={3}>
                                 <Card className={classes.card}>
                                     <CardActionArea>
                                         <CardMedia
@@ -69,15 +78,15 @@ const Main = ({ Data }) => {
                                             component="img"
                                             alt="Contemplative Reptile"
                                             height="140"
-                                            image={news.image}
+                                            image={data.image}
                                             title="Contemplative Reptile"
                                         />
                                         <CardContent>
                                             <Typography className={classes.title} gutterBottom variant="h5" component="h2">
-                                                {news.title}
+                                                {data.title}
                                             </Typography>
                                             <Typography className={classes.description} variant="body2" color="textSecondary" component="p">
-                                                {news.description}
+                                                {data.description}
                                             </Typography>
                                         </CardContent>
                                     </CardActionArea>

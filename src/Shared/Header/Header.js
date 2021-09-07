@@ -19,6 +19,8 @@ import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
+import {Link} from 'react-router-dom'
+
 
 const drawerWidth = 240;
 
@@ -118,9 +120,11 @@ const Header = () => {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap>
+                    <Link to = '/'>
+                    <Typography style ={{cursor: "pointer"}} variant="h6" noWrap>
                         THE WORLD DESCRIPTION
                     </Typography>
+                    <Link>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -143,22 +147,30 @@ const Header = () => {
                 </div>
                 <Divider />
                 <List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
+                  <Link to='/dashboard'>
+                  <ListItem button >
+                            <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                            <ListItemText primary="Add News" />
+                  </ListItem>
+                  </Link>
+                  <ListItem button >
+                            <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                            <ListItemText primary="Make Admin" />
+                  </ListItem>
+                  <ListItem button >
+                            <ListItemIcon> <InboxIcon /> </ListItemIcon>
+                            <ListItemText primary="Dashboard" />
+                  </ListItem>
                 </List>
                 <Divider />
-                <List>
+                {/* <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
-                </List>
+                </List> */}
             </Drawer>
         </div>
     );
