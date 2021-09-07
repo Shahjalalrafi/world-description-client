@@ -2,13 +2,18 @@ import React from 'react';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Home from './Components/HomePage/Home';
 import NewsDetails from './Components/NewsDetails/NewsDetails';
+import LogIn from './Components/Login/LogIn';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import { createContext, useState } from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
+export const userContext = createContext()
 
 export default function App() {
+  const [logedInUser, setLogedInUser] = useState({})
   return (
-    <div >
+    <userContext.Provider value = {[logedInUser, setLogedInUser]}  >
       <Router>
         <Switch>
         <Route path='/home'>
@@ -19,8 +24,12 @@ export default function App() {
             <Dashboard />
           </Route>
           
-          <Route path='/news/:id'>
+          <PrivateRoute path='/news/:id'>
             <NewsDetails />
+          </PrivateRoute>
+          
+          <Route path='/login'>
+            <LogIn />
           </Route>
 
           <Route exact path='/'>
@@ -32,6 +41,6 @@ export default function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </userContext.Provider>
   );
 }
